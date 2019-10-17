@@ -1,4 +1,4 @@
-package prob344
+package q344
 
 /**
 344. 反转字符串
@@ -13,6 +13,9 @@ func ReverseString(s []byte) {
 	reverseStrRecursion(0, len(s)-1, s)
 }
 
+/**
+递归
+*/
 func reverseStrRecursion(pos int, end int, s []byte) {
 	if pos >= end {
 		return

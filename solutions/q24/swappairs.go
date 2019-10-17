@@ -1,4 +1,4 @@
-package prob24
+package q24
 
 import (
 	"../../dskit"
@@ -24,8 +24,11 @@ Given 1->2->3->4, you should return the list as 2->1->4->3.
  *     Next *ListNode
  * }
  */
+
+/**
+递归
+*/
 func SwapPairs(head *dskit.ListNode) *dskit.ListNode {
-	// 递归解法
 	if head == nil || head.Next == nil {
 		return head
 	}

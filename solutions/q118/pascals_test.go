@@ -1,4 +1,4 @@
-package porb118
+package q118
 
 import (
 	"reflect"
@@ -20,4 +20,3 @@ func TestGenerate(t *testing.T) {
 		t.Fatalf("got '%v'", got)
 	}
 }
-

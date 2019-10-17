@@ -1,4 +1,4 @@
-package prob24
+package q24
 
 import (
 	"../../dskit"
