@@ -9,8 +9,8 @@ package prob344
 你可以假设数组中的所有字符都是 ASCII 码表中的可打印字符。
 */
 
-func reverseString(s []byte)  {
-	reverseStrRecursion(0, len(s) - 1, s)
+func ReverseString(s []byte) {
+	reverseStrRecursion(0, len(s)-1, s)
 }
 
 func reverseStrRecursion(pos int, end int, s []byte) {
@@ -20,5 +20,5 @@ func reverseStrRecursion(pos int, end int, s []byte) {
 	tmp := s[pos]
 	s[pos] = s[end]
 	s[end] = tmp
-	reverseStrRecursion(pos + 1, end - 1, s)
+	reverseStrRecursion(pos+1, end-1, s)
 }

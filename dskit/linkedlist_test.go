@@ -13,11 +13,11 @@ func TestEqual(t *testing.T) {
 
 /**
 测试此项之前必须先测试 NewLinkedListBySlice
- */
+*/
 func TestSliceByNode(t *testing.T) {
 	t.Run("test new linkedlist by slice", testNewLinkedListBySlice)
 
-	give := []int {1, 2, 3, 4}
+	give := []int{1, 2, 3, 4}
 	head := NewLinkedListBySlice(give)
 	got := SliceByNode(head)
 

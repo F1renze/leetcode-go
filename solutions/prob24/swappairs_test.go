@@ -7,7 +7,6 @@ import (
 
 func TestSwapPairs(t *testing.T) {
 
-
 	give := []int{1, 2, 3, 4}
 	want := []int{2, 1, 4, 3}
 

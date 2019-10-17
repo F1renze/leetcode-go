@@ -1,7 +1,7 @@
 package dskit
 
 type ListNode struct {
-	Val int
+	Val  int
 	Next *ListNode
 }
 
