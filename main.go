@@ -7,5 +7,6 @@ import (
 )
 
 func main() {
-	fmt.Printf("+%v", build.Run())
+	err := build.Run()
+	fmt.Printf("%+v\n", err)
 }

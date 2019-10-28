@@ -7,16 +7,47 @@ import (
 	"strings"
 )
 
+type SolutionInfo struct {
+	FolderMap   map[int]string
+	SolutionMap map[int]string
+}
+
+func (s *SolutionInfo) SetFolder(id int, folder string) {
+	s.FolderMap[id] = folder
+}
+
+func (s *SolutionInfo) GetFolder(id int) (string, bool) {
+	folder, ok := s.FolderMap[id]
+	return folder, ok
+}
+
+func (s *SolutionInfo) SetSolution(id int, file string) {
+	s.SolutionMap[id] = file
+}
+
+func (s *SolutionInfo) GetSolution(id int) (string, bool) {
+	file, ok := s.SolutionMap[id]
+	return file, ok
+}
+
+func NewSolutionInfo() *SolutionInfo {
+	return &SolutionInfo{
+		FolderMap:   make(map[int]string),
+		SolutionMap: make(map[int]string),
+	}
+}
+
 /**
 返回题号对应的文件夹
 */
-func IterSolutions() (map[int]string, error) {
-	files, err := ioutil.ReadDir("./solutions")
+func IterSolutions() (*SolutionInfo, error) {
+
+	files, err := ioutil.ReadDir(_solutionPath)
 	if err != nil {
 		return nil, errWrap(err)
 	}
 
-	idMap := make(map[int]string)
+	info := NewSolutionInfo()
 
 	for _, f := range files {
 		if strings.HasPrefix(f.Name(), ".") {
@@ -28,11 +59,25 @@ func IterSolutions() (map[int]string, error) {
 		if err != nil {
 			return nil, errWrap(err)
 		}
+		sfFiles, err := ioutil.ReadDir(fmt.Sprintf(
+			_solutionPath + "/%v",
+			f.Name()))
 
-		idMap[id] = f.Name()
+		if err != nil {
+			return nil, errorf(err.Error())
+		}
+
+		for _, sf := range sfFiles {
+			if strings.HasSuffix(sf.Name(), ".go") &&
+				!strings.HasSuffix(sf.Name(), "_test.go") {
+
+				info.SetFolder(id, f.Name())
+				info.SetSolution(id, sf.Name())
+			}
+		}
 	}
 
-	return idMap, nil
+	return info, nil
 }
 
 func Run() error {
@@ -50,17 +95,19 @@ func Run() error {
 		return err
 	}
 
-	idMaps, err := IterSolutions()
+	solutionInfo, err := IterSolutions()
 	if err != nil {
 		return err
 	}
 	var (
 		ids  []int
-		meta []*DetailMeta
+		meta []*DetailInfo
 	)
-	for k := range idMaps {
-		ids = append(ids, k)
+
+	for id := range solutionInfo.FolderMap {
+		ids = append(ids, id)
 	}
+
 	slugs := QuerySlugs(idSlugMap, ids)
 
 	for _, s := range slugs {
@@ -68,11 +115,11 @@ func Run() error {
 		if err != nil {
 			fmt.Println(err)
 		}
-		r := RenderDetail(resp, idMaps)
+		r := RenderDetail(resp, solutionInfo)
 		meta = append(meta, r)
 	}
 
-	Render(NewMeta(len(meta), meta))
+	Render(NewRenderInfo(len(meta), meta))
 
 	return nil
 }

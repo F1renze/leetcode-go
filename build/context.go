@@ -4,7 +4,7 @@ import "github.com/go-resty/resty/v2"
 
 type Context struct {
 	// 存放关键 cookie
-	Kvs map[string]string
+	Kvs             map[string]string
 	Client          *resty.Client
 	CSRF            string
 	LeetCodeSession string
