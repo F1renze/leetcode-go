@@ -1,6 +1,6 @@
 package q206
 
-import "../../dskit"
+import "github.com/f1renze/leetcode-go/dskit"
 
 /**
 Reverse a singly linked list.

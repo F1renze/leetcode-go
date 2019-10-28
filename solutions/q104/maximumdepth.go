@@ -1,6 +1,6 @@
 package q104
 
-import "../../dskit"
+import "github.com/f1renze/leetcode-go/dskit"
 
 /**
 104. Maximum Depth of Binary Tree

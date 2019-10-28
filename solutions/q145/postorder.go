@@ -1,6 +1,6 @@
 package q145
 
-import "../../dskit"
+import "github.com/f1renze/leetcode-go/dskit"
 
 func postorderTraversal(root *dskit.TreeNode) []int {
 

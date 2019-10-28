@@ -17,3 +17,7 @@
 # vendor/
 
 .idea
+
+build/*.json
+/build/conf.yml
+**/.DS_Store

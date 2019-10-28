@@ -1,6 +1,6 @@
 package q95
 
-import "../../dskit"
+import "github.com/f1renze/leetcode-go/dskit"
 
 /**
  * Definition for a binary tree node.

@@ -1,7 +1,7 @@
 package q24
 
 import (
-	"../../dskit"
+	"github.com/f1renze/leetcode-go/dskit"
 )
 
 /**

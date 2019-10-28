@@ -1,7 +1,7 @@
 package q21
 
 import (
-	"../../dskit"
+	"github.com/f1renze/leetcode-go/dskit"
 )
 
 /**
@@ -26,6 +26,9 @@ func MergeTwoListsRecursion(l1 *dskit.ListNode, l2 *dskit.ListNode) *dskit.ListN
 	}
 }
 
+/**
+归并排序
+*/
 func MergeTwoListsIteration(l1 *dskit.ListNode, l2 *dskit.ListNode) *dskit.ListNode {
 	head := new(dskit.ListNode)
 	prev := head
