@@ -1,8 +1,11 @@
 package build
 
 import (
+	"bytes"
 	"fmt"
 	"github.com/spf13/viper"
+	"os/exec"
+	"strings"
 )
 
 const (
@@ -24,16 +27,42 @@ const (
 var (
 	_username string
 	_password string
+	_branch string
 )
 
 func init() {
 	viper.SetConfigFile("build/conf.yml")
 
-	err := viper.ReadInConfig()
+	var (
+		err error
+		buf bytes.Buffer
+	)
+	defer func() {
+		if err != nil {
+			panic(err)
+		}
+	}()
+
+	err = viper.ReadInConfig()
 	if err != nil {
 		panic(fmt.Errorf("Fatal error config file: %s \n", err))
 	}
 
 	_username = viper.GetString("username")
 	_password = viper.GetString("password")
+
+
+	c1 := exec.Command("git", "branch")
+	c2 := exec.Command("grep", "-i", `\*`)
+
+	c2.Stdin, err = c1.StdoutPipe()
+	c2.Stdout = &buf
+	err = c2.Start()
+	err = c1.Run()
+	err = c2.Wait()
+
+	data := string(buf.Bytes())
+	// output example: * dev
+	_branch = strings.TrimSpace(strings.Split(data, "*")[1])
+	fmt.Println("current branch: ", _branch)
 }

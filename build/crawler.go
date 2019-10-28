@@ -13,7 +13,7 @@ func GetAllProblems(ctx *Context, url string) (map[int]string, error) {
 		Get(url)
 
 	if err != nil {
-		return nil, errWrap(err)
+		return nil, ErrWrap(err)
 	}
 
 	data := fmt.Sprintf("%v", resp)
@@ -26,7 +26,7 @@ func GetAllProblems(ctx *Context, url string) (map[int]string, error) {
 	probResp := new(ProbResp)
 	err = json.Unmarshal([]byte(data), probResp)
 	if err != nil {
-		return nil, errWrap(err)
+		return nil, ErrWrap(err)
 	}
 
 	idSlugMap := make(map[int]string)
@@ -60,18 +60,18 @@ func GetDetailBySlug(ctx *Context, slug string) (*GraphQlResp, error) {
 		Post(_grapgql)
 
 	if err != nil {
-		return nil, errWrap(err)
+		return nil, ErrWrap(err)
 	}
 
 	if resp.StatusCode() != 200 {
-		return nil, errorf("query failed, status code: %v", resp.StatusCode())
+		return nil, Errorf("query failed, status code: %v", resp.StatusCode())
 	}
 
 	data := fmt.Sprintf("%v", resp)
 	respObj := new(GraphQlResp)
 	err = json.Unmarshal([]byte(data), respObj)
 	if err != nil {
-		return nil, errorf(err.Error())
+		return nil, Errorf(err.Error())
 	}
 	// 解析 html
 	respObj.Data.Question.Content = GetHtmlContent(respObj.Data.Question.Content, detailUrl)

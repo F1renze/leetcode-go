@@ -32,7 +32,7 @@ func NewDetailInfo(id int, title, difficulty, path string) *DetailInfo {
 		Id:         id,
 		Title:      title,
 		Difficulty: difficulty,
-		Path:       GetGitPrefix() + path,
+		Path:       GetGitUrl(path),
 	}
 }
 

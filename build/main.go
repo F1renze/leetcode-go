@@ -44,7 +44,7 @@ func IterSolutions() (*SolutionInfo, error) {
 
 	files, err := ioutil.ReadDir(_solutionPath)
 	if err != nil {
-		return nil, errWrap(err)
+		return nil, ErrWrap(err)
 	}
 
 	info := NewSolutionInfo()
@@ -57,14 +57,14 @@ func IterSolutions() (*SolutionInfo, error) {
 		name := strings.Split(f.Name(), "q")[1]
 		id, err := strconv.Atoi(name)
 		if err != nil {
-			return nil, errWrap(err)
+			return nil, ErrWrap(err)
 		}
 		sfFiles, err := ioutil.ReadDir(fmt.Sprintf(
 			_solutionPath+"/%v",
 			f.Name()))
 
 		if err != nil {
-			return nil, errorf(err.Error())
+			return nil, Errorf(err.Error())
 		}
 
 		for _, sf := range sfFiles {

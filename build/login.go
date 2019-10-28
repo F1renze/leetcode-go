@@ -34,11 +34,11 @@ func Login(ctx *Context, url string) error {
 	}
 
 	if _, ok := ctx.Get(_sessionKey); ok == false {
-		return errorf("login failed, unable found session id in resp header")
+		return Errorf("login failed, unable found session id in resp header")
 	}
 
 	if resp.StatusCode() != 302 {
-		return errorf("login failed, status code %v", resp.StatusCode())
+		return Errorf("login failed, status code %v", resp.StatusCode())
 	}
 
 	return nil
@@ -50,7 +50,7 @@ func GetCSRF(ctx *Context, url string) error {
 		Get(url)
 
 	if err != nil {
-		return errWrap(err)
+		return ErrWrap(err)
 	}
 
 	for _, c := range resp.Cookies() {
@@ -60,5 +60,5 @@ func GetCSRF(ctx *Context, url string) error {
 		}
 	}
 
-	return errorf("unable found csrf token in resp header")
+	return Errorf("unable found csrf token in resp header")
 }

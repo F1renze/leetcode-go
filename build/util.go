@@ -13,14 +13,14 @@ import (
 	"github.com/pkg/errors"
 )
 
-func errorf(format string, a ...interface{}) error {
+func Errorf(format string, a ...interface{}) error {
 	return errors.Wrap(fmt.Errorf(format, a...), "")
 }
 
 /**
 跟踪栈堆
 */
-func errWrap(err error, a ...interface{}) error {
+func ErrWrap(err error, a ...interface{}) error {
 	var m string
 	if len(a) > 0 {
 		if format, ok := a[0].(string); ok {
@@ -53,7 +53,7 @@ func SaveFile(data string) error {
 	name := fmt.Sprintf("build/file_%v.json", date)
 	file, err := os.Create(name)
 	if err != nil {
-		return errorf(err.Error())
+		return Errorf(err.Error())
 	}
 	defer file.Close()
 	w := bufio.NewWriter(file)
@@ -62,13 +62,15 @@ func SaveFile(data string) error {
 	w.Flush()
 
 	if err != nil {
-		return errorf(err.Error())
+		return Errorf(err.Error())
 	}
 	return nil
 }
 
-func GetGitPrefix() string {
+func GetGitUrl(path string) string {
 	// TODO read git
 	//https://github.com/F1renze/leetcode-go/blob/master/solutions/q104/maximumdepth.go
-	return "https://github.com/F1renze/leetcode-go/blob/dev/"
+	return fmt.Sprintf("https://github.com/F1renze/leetcode-go/blob/%v/%v",
+		_branch,
+		path)
 }
