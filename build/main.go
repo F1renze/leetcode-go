@@ -60,7 +60,7 @@ func IterSolutions() (*SolutionInfo, error) {
 			return nil, errWrap(err)
 		}
 		sfFiles, err := ioutil.ReadDir(fmt.Sprintf(
-			_solutionPath + "/%v",
+			_solutionPath+"/%v",
 			f.Name()))
 
 		if err != nil {
@@ -72,7 +72,8 @@ func IterSolutions() (*SolutionInfo, error) {
 				!strings.HasSuffix(sf.Name(), "_test.go") {
 
 				info.SetFolder(id, f.Name())
-				info.SetSolution(id, sf.Name())
+				info.SetSolution(id, fmt.Sprintf(
+					_solutionPath+"/%v/%v", f.Name(), sf.Name()))
 			}
 		}
 	}
