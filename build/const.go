@@ -18,7 +18,7 @@ const (
 
 	_detailTemplate = "build/detail_template.md"
 	_readMeTemplate = "build/template.md"
-	_solutionPath   = "./solutions"
+	_solutionPath   = "solutions"
 )
 
 var (
