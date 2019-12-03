@@ -2,7 +2,7 @@ module github.com/f1renze/leetcode-go
 
 go 1.13
 
-replace github.com/f1renze/leetcode-go => ./leetcode-go
+replace github.com/f1renze/leetcode-go => ./
 
 require (
 	github.com/PuerkitoBio/goquery v1.5.0
