@@ -12,14 +12,14 @@ func Range(s, e int) (r []int) {
 	return
 }
 
-func TAssert(tb testing.TB, condition bool, format string, v ...interface{}) {
+func Assert(tb testing.TB, condition bool, format string, v ...interface{}) {
 	tb.Helper()
 	if condition != true {
 		tb.Fatalf(format, v...)
 	}
 }
 
-func TNoErr(tb testing.TB, err error) {
+func NoErr(tb testing.TB, err error) {
 	tb.Helper()
 	if err != nil {
 		tb.Fatalf("unexpected error occur, '%v'", err)
