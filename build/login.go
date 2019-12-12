@@ -32,7 +32,7 @@ func Login(ctx *Context, url string) error {
 			ctx.Set(_csrfKey, c.Value)
 		}
 	}
-
+	// FIXME
 	if _, ok := ctx.Get(_sessionKey); ok == false {
 		return Errorf("login failed, unable found session id in resp header")
 	}
