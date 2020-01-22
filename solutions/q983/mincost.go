@@ -9,7 +9,7 @@ func MinCostTickets(days []int, costs []int) int {
 	}
 
 	var (
-		dp func(int) int
+		dp        func(int) int
 		durations = []int{1, 7, 30}
 	)
 	memo := make([]int, d)
@@ -25,11 +25,11 @@ func MinCostTickets(days []int, costs []int) int {
 		j := i
 		ans := 1 << 32
 		for k := range durations {
-			for j < d && days[j] < days[i] + durations[k] {
+			for j < d && days[j] < days[i]+durations[k] {
 				j++
 			}
 
-			ans = min(ans, dp(j) + costs[k])
+			ans = min(ans, dp(j)+costs[k])
 		}
 
 		memo[i] = ans
@@ -42,7 +42,6 @@ func MinCostTickets(days []int, costs []int) int {
 func min(a, b int) int {
 	if a < b {
 		return a
-	} else {
-		return b
 	}
+	return b
 }
