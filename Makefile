@@ -1,6 +1,9 @@
 
-update: ## 更新 Readme
+update: ## update Readme
 	@go run main.go
+
+count: ## count total solutions
+	@ls -l solutions/|wc -l
 
 .DEFAULT_GOAL :=
 help: ## 显示帮助
