@@ -13,4 +13,3 @@ func FisherYatesShuffle(arr []int) []int {
 	}
 	return arr
 }
-//[4 7 10 3 6 5 8 9]
