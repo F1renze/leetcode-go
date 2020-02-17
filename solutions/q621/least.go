@@ -10,13 +10,13 @@ func leastInterval(tasks []byte, n int) int {
 	slots := make([]int, 26)
 
 	for i := range tasks {
-		slots[tasks[i] - 'A']++
+		slots[tasks[i]-'A']++
 	}
 	// 排序
 	sort.Ints(slots)
 
 	// 虚拟列 = 最多任务数 * (n + 1)
-	maxCnt := slots[25] -1
+	maxCnt := slots[25] - 1
 	idles := maxCnt * n
 
 	for i := 24; i >= 0 && slots[i] > 0; i-- {
@@ -30,12 +30,9 @@ func leastInterval(tasks []byte, n int) int {
 	return taskCnt + idles
 }
 
-
 func min(a, b int) int {
 	if a < b {
 		return a
 	}
 	return b
 }
-
-

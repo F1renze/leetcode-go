@@ -8,7 +8,7 @@ func topKFrequent(nums []int, k int) []int {
 	}
 	heap := &Heap{
 		cntMap: countMap,
-		data: []int{-1},
+		data:   []int{-1},
 	}
 
 	for k := range countMap {
@@ -25,12 +25,12 @@ func topKFrequent(nums []int, k int) []int {
 // max heap
 type Heap struct {
 	cntMap map[int]int
-	data []int
+	data   []int
 }
 
 func (h *Heap) insert(val int) {
 	h.data = append(h.data, val)
-	h.swim(h.size() -1)
+	h.swim(h.size() - 1)
 }
 
 func (h *Heap) pop() int {
@@ -41,7 +41,6 @@ func (h *Heap) pop() int {
 	h.sink(1)
 	return val
 }
-
 
 func (h *Heap) size() int {
 	return len(h.data)
@@ -73,7 +72,7 @@ func (h *Heap) swim(i int) {
 	}
 
 	par := h.parent(i)
-	for ;h.getValCnt(par) < h.getValCnt(i); {
+	for h.getValCnt(par) < h.getValCnt(i) {
 		h.swap(par, i)
 		i, par = par, h.parent(par)
 		if par == 0 {

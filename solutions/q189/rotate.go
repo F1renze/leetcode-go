@@ -17,15 +17,15 @@ func rotateBruteForce(nums []int, k int) {
 }
 
 // 反转
-func rotateReverse(nums []int, k int)  {
+func rotateReverse(nums []int, k int) {
 	l := len(nums)
 	if l < 2 {
 		return
 	}
 
 	reverseArr(nums, 0, l-1)
-	reverseArr(nums, 0, (k % l) -1)
-	reverseArr(nums, (k%l), l-1)
+	reverseArr(nums, 0, (k%l)-1)
+	reverseArr(nums, (k % l), l-1)
 }
 
 func reverseArr(nums []int, lo, hi int) {
@@ -38,7 +38,7 @@ func reverseArr(nums []int, lo, hi int) {
 }
 
 // 额外空间
-func rotateOn(nums []int, k int)  {
+func rotateOn(nums []int, k int) {
 	l := len(nums)
 	if l < 2 {
 		return
@@ -46,7 +46,7 @@ func rotateOn(nums []int, k int)  {
 
 	r := make([]int, l)
 	for i := range nums {
-		r[(i + k) % l] = nums[i]
+		r[(i+k)%l] = nums[i]
 	}
 
 	for i := range nums {

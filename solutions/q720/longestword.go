@@ -2,7 +2,7 @@ package q720
 
 type TrieNode struct {
 	Children map[rune]*TrieNode
-	End int
+	End      int
 }
 
 func NewTrieNode() *TrieNode {
@@ -17,7 +17,7 @@ type Trie struct {
 	Words []string
 }
 
-func (t *Trie)Insert(w string, index int) {
+func (t *Trie) Insert(w string, index int) {
 	node := t.Root
 	chars := []rune(w)
 
@@ -30,7 +30,7 @@ func (t *Trie)Insert(w string, index int) {
 	node.End = index
 }
 
-func (t *Trie)DFS() string{
+func (t *Trie) DFS() string {
 	ans := ""
 	stack := []*TrieNode{t.Root}
 
@@ -61,14 +61,14 @@ func (t *Trie)DFS() string{
 	return ans
 }
 
-func NewTrie() *Trie{
+func NewTrie() *Trie {
 	return &Trie{
 		Root:  NewTrieNode(),
 		Words: nil,
 	}
 }
 
-func LongestWord(words []string) string{
+func LongestWord(words []string) string {
 	trie := NewTrie()
 
 	for i := 0; i < len(words); i++ {
@@ -77,4 +77,3 @@ func LongestWord(words []string) string{
 	trie.Words = words
 	return trie.DFS()
 }
-

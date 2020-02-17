@@ -15,7 +15,7 @@ const (
 )
 
 type Node struct {
-	Kv  *KeyVal
+	Kv   *KeyVal
 	Next *Node
 	Prev *Node
 }
@@ -25,7 +25,7 @@ type KeyVal struct {
 	Val int
 }
 
-func newNode(key, val int) *Node{
+func newNode(key, val int) *Node {
 	return &Node{
 		Kv: &KeyVal{
 			Key: key,
@@ -105,9 +105,9 @@ func (t *MyHashMap) shrink() {
 	t.resize(newSize)
 }
 
-func  (t *MyHashMap) searchNode(key int)(*Node, bool) {
+func (t *MyHashMap) searchNode(key int) (*Node, bool) {
 	slot := getSlot(key, len(t.bucketArr))
-	node :=  t.bucketArr[slot]
+	node := t.bucketArr[slot]
 
 	for {
 		switch {
@@ -124,7 +124,7 @@ func  (t *MyHashMap) searchNode(key int)(*Node, bool) {
 }
 
 /** value will always be non-negative. */
-func (t *MyHashMap) Put(key , val int) {
+func (t *MyHashMap) Put(key, val int) {
 	node, ok := t.searchNode(key)
 	if ok {
 		node.Kv.Val = val

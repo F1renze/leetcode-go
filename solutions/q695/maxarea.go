@@ -1,6 +1,5 @@
 package q695
 
-
 func maxAreaOfIsland(grid [][]int) int {
 	if len(grid) < 1 {
 		return 0

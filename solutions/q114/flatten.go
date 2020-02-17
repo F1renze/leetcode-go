@@ -10,12 +10,12 @@ import "github.com/f1renze/leetcode-go/dskit"
  *     Right *TreeNode
  * }
  */
-func flatten(root *dskit.TreeNode)  {
+func flatten(root *dskit.TreeNode) {
 	if root == nil {
 		return
 	}
 	var (
-		s []*dskit.TreeNode
+		s   []*dskit.TreeNode
 		cur *dskit.TreeNode
 		tmp *dskit.TreeNode
 	)
@@ -43,7 +43,6 @@ func flatten(root *dskit.TreeNode)  {
 		}
 	}
 }
-
 
 // recursion
 func recursionFlatten(root *dskit.TreeNode) {

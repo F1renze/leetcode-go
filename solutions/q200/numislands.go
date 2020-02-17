@@ -1,6 +1,5 @@
 package q200
 
-
 func numIslands(grid [][]byte) int {
 	if len(grid) < 1 {
 		return 0
@@ -18,7 +17,7 @@ func numIslands(grid [][]byte) int {
 	return count
 }
 
-func dfs (grid [][]byte, i, j int) {
+func dfs(grid [][]byte, i, j int) {
 	switch {
 	case i < 0:
 		fallthrough

@@ -23,7 +23,7 @@ func PathSum(root *dskit.TreeNode, sum int) (result [][]int) {
 		}
 		s.push(node.Val)
 		total += node.Val
-		if total == sum && node.Left == node.Right && node.Left == nil{
+		if total == sum && node.Left == node.Right && node.Left == nil {
 			result = append(result, s.toSlice())
 		} else {
 			helper(node.Left, s, total)

@@ -1,6 +1,5 @@
 package q63
 
-
 func uniquePathsWithObstacles(obstacleGrid [][]int) int {
 	if obstacleGrid[0][0] == 1 {
 		return 0

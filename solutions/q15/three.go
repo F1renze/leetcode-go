@@ -7,7 +7,7 @@ func threeSum(nums []int) (ret [][]int) {
 	if length < 3 {
 		return
 	}
-	sort.Slice(nums, func(a, b int)bool {
+	sort.Slice(nums, func(a, b int) bool {
 		return nums[a] < nums[b]
 	})
 
@@ -23,16 +23,20 @@ func threeSum(nums []int) (ret [][]int) {
 		if i > 0 && nums[i] == nums[i-1] {
 			continue
 		}
-		l =  i + 1
+		l = i + 1
 		r = length - 1
 		for l < r {
 			sum = nums[i] + nums[l] + nums[r]
 			if sum == 0 {
 				ret = append(ret, []int{nums[i], nums[l], nums[r]})
 				// 去重
-				for l < r && nums[l] == nums[l+1] {l++}
+				for l < r && nums[l] == nums[l+1] {
+					l++
+				}
 				// 去重
-				for l < r && nums[r] == nums[r-1] {r--}
+				for l < r && nums[r] == nums[r-1] {
+					r--
+				}
 
 				l++
 				r--
@@ -46,4 +50,3 @@ func threeSum(nums []int) (ret [][]int) {
 
 	return
 }
-

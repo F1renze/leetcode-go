@@ -1,6 +1,5 @@
 package q62
 
-
 func uniquePaths(m int, n int) int {
 	tmp := make([]int, n)
 	for i := range tmp {

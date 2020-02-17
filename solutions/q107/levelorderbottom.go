@@ -17,7 +17,7 @@ func levelOrderBottom(root *dskit.TreeNode) (result [][]int) {
 	queue := []*dskit.TreeNode{root}
 
 	for {
-		if (len(queue) < 1) {
+		if len(queue) < 1 {
 			break
 		}
 		tmp := make([]int, 0)

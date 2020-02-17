@@ -8,7 +8,7 @@ func searchRange(nums []int, target int) []int {
 	}
 
 	for l < r {
-		m = l + (r - l) / 2
+		m = l + (r-l)/2
 		// 移动到左边界
 		if nums[m] >= target {
 			r = m
@@ -22,7 +22,7 @@ func searchRange(nums []int, target int) []int {
 	arr[0], r = l, len(nums)
 
 	for l < r {
-		m = l + (r - l) / 2
+		m = l + (r-l)/2
 		// 移动到右边界
 		if nums[m] > target {
 			r = m

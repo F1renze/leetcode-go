@@ -1,6 +1,5 @@
 package q994
 
-
 func orangesRotting(grid [][]int) int {
 	m := len(grid)
 	n := len(grid[0])

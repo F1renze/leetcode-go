@@ -26,7 +26,7 @@ loop:
 		i, j, d := pos.i, pos.j, pos.depth
 
 		if i < 0 || j < 0 || i >= len(grid) || j >= len(grid[i]) ||
-			(grid[i][j] != 1 && grid[i][j] != 0){
+			(grid[i][j] != 1 && grid[i][j] != 0) {
 			continue
 		}
 
@@ -64,15 +64,15 @@ func dfs(grid [][]int, i, j int, q *queue) {
 
 func newPos(i, j, d int) *pos {
 	return &pos{
-		i: i,
-		j: j,
+		i:     i,
+		j:     j,
 		depth: d,
 	}
 }
 
 type pos struct {
-	i int
-	j int
+	i     int
+	j     int
 	depth int
 }
 
@@ -87,7 +87,7 @@ func (q *queue) Enqueue(p *pos) {
 	*q = append(*q, p)
 }
 
-func (q *queue) Dequeue() *pos{
+func (q *queue) Dequeue() *pos {
 	if len(*q) > 0 {
 		p := (*q)[0]
 		*q = (*q)[1:]

@@ -24,7 +24,7 @@ func robHelper(nums []int) int {
 
 	for i := range nums {
 		if (prev + nums[i]) > cur {
-			prev, cur = cur, prev + nums[i]
+			prev, cur = cur, prev+nums[i]
 		} else {
 			prev = cur
 		}

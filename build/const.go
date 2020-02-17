@@ -27,7 +27,7 @@ const (
 var (
 	_username string
 	_password string
-	_branch string
+	_branch   string
 )
 
 func init() {
@@ -50,7 +50,6 @@ func init() {
 
 	_username = viper.GetString("username")
 	_password = viper.GetString("password")
-
 
 	c1 := exec.Command("git", "branch")
 	c2 := exec.Command("grep", "-i", `\*`)

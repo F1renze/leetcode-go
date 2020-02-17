@@ -1,23 +1,20 @@
 package q703
 
-
 type KthLargest struct {
 	heap []int
-	k int
+	k    int
 }
-
 
 func Constructor(k int, nums []int) KthLargest {
 	kth := KthLargest{
 		heap: []int{-1},
-		k: k + 1,
+		k:    k + 1,
 	}
 	for i := range nums {
 		kth.insert(nums[i])
 	}
 	return kth
 }
-
 
 func (h *KthLargest) Add(val int) int {
 	h.insert(val)
@@ -32,7 +29,7 @@ func (h *KthLargest) parent(pos int) int {
 	return pos >> 1
 }
 
-func (h *KthLargest) left(pos int) int{
+func (h *KthLargest) left(pos int) int {
 	return pos << 1
 }
 
@@ -51,7 +48,7 @@ func (h *KthLargest) insert(val int) {
 		h.sink(1)
 	} else {
 		h.heap = append(h.heap, val)
-		h.swim(len(h.heap) -1)
+		h.swim(len(h.heap) - 1)
 	}
 }
 
@@ -61,7 +58,7 @@ func (h *KthLargest) swim(pos int) {
 		return
 	}
 	par := h.parent(pos)
-	for ; h.heap[par] > h.heap[pos]; {
+	for h.heap[par] > h.heap[pos] {
 		h.swap(par, pos)
 		pos, par = par, h.parent(par)
 		if par == 0 {
@@ -94,4 +91,3 @@ func (h *KthLargest) sink(pos int) {
  * obj := Constructor(k, nums);
  * param_1 := obj.Add(val);
  */
-

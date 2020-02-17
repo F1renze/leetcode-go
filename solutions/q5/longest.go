@@ -18,7 +18,7 @@ func longestPalindrome(s string) string {
 
 	for i := 1; i < len(l); i++ {
 
-		if len(l) - c <= l[m]{
+		if len(l)-c <= l[m] {
 			break
 		}
 
@@ -32,8 +32,8 @@ func longestPalindrome(s string) string {
 			l[i]++
 		}
 
-		if i + l[i] > r {
-			r = i+l[i]
+		if i+l[i] > r {
+			r = i + l[i]
 			c = i
 		}
 		if l[i] > l[m] {

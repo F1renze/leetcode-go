@@ -12,7 +12,7 @@ func numRescueBoats(people []int, limit int) int {
 	c := 0
 
 	for s <= e {
-		if people[s] + people[e] <= limit {
+		if people[s]+people[e] <= limit {
 			s++
 			e--
 		} else if people[e] <= limit {

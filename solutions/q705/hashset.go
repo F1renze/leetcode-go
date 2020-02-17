@@ -15,14 +15,14 @@ const (
 )
 
 type Node struct {
-	Val int
+	Val  int
 	Next *Node
 	Prev *Node
 }
 
-func newNode(val int) *Node{
+func newNode(val int) *Node {
 	return &Node{
-		Val:  val,
+		Val: val,
 	}
 }
 
@@ -97,9 +97,9 @@ func (t *MyHashSet) shrink() {
 	t.resize(newSize)
 }
 
-func  (t *MyHashSet) searchNode(key int)(*Node, bool) {
+func (t *MyHashSet) searchNode(key int) (*Node, bool) {
 	slot := getSlot(key, len(t.bucketArr))
-	node :=  t.bucketArr[slot]
+	node := t.bucketArr[slot]
 
 	for {
 		switch {

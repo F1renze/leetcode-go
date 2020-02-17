@@ -1,10 +1,9 @@
 package q846
 
-
 func isNStraightHand(hand []int, W int) bool {
 	candidate := make([]int, W)
 	for i := range hand {
-		candidate[hand[i] % W]++
+		candidate[hand[i]%W]++
 	}
 
 	for i := 0; i < W-1; i++ {
@@ -15,4 +14,3 @@ func isNStraightHand(hand []int, W int) bool {
 	}
 	return true
 }
-

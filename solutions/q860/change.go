@@ -1,6 +1,5 @@
 package q860
 
-
 func lemonadeChange(bills []int) bool {
 	five, ten := 0, 0
 

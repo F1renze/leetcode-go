@@ -5,39 +5,38 @@ import "math/rand"
 const MaxLayers = 16
 
 type SkipList struct {
-	level int
+	level  int
 	length int
-	head *SkipListNode
+	head   *SkipListNode
 }
 
 type SkipListNode struct {
-	val int
+	val   int
 	layer []*SkipListNode
 }
 
 func NewSkipListNode(val, layers int) *SkipListNode {
 	return &SkipListNode{
-		val: val,
+		val:   val,
 		layer: make([]*SkipListNode, layers),
 	}
 }
 
 func Constructor() SkipList {
-	head := NewSkipListNode(-1 << 31, MaxLayers)
+	head := NewSkipListNode(-1<<31, MaxLayers)
 	return SkipList{
-		level: 1,
+		level:  1,
 		length: 0,
-		head: head,
+		head:   head,
 	}
 }
-
 
 func (s *SkipList) Search(target int) bool {
 	if s.length < 1 {
 		return false
 	}
 	cur := s.head
-	for i:= MaxLayers-1; i >= 0; i-- {
+	for i := MaxLayers - 1; i >= 0; i-- {
 		for cur.layer[i] != nil {
 			val := cur.layer[i].val
 			if val > target {
@@ -52,12 +51,11 @@ func (s *SkipList) Search(target int) bool {
 	return false
 }
 
-
-func (s *SkipList) Add(num int)  {
+func (s *SkipList) Add(num int) {
 	cur := s.head
 	path := make([]*SkipListNode, MaxLayers)
 
-	for i:= MaxLayers-1; i >= 0; i-- {
+	for i := MaxLayers - 1; i >= 0; i-- {
 		for cur.layer[i] != nil {
 			if cur.layer[i].val >= num {
 				path[i] = cur
@@ -71,8 +69,8 @@ func (s *SkipList) Add(num int)  {
 	}
 
 	level := 1
-	for i := level; i < MaxLayers;i++ {
-		if rand.Int31() % 7 == 1 {
+	for i := level; i < MaxLayers; i++ {
+		if rand.Int31()%7 == 1 {
 			level++
 		}
 	}
@@ -86,14 +84,13 @@ func (s *SkipList) Add(num int)  {
 	}
 }
 
-
 func (s *SkipList) Erase(num int) bool {
 	if s.length < 1 {
 		return false
 	}
 	cur := s.head
 	path := make([]*SkipListNode, MaxLayers)
-	for i:= MaxLayers-1; i >= 0; i-- {
+	for i := MaxLayers - 1; i >= 0; i-- {
 		for cur.layer[i] != nil && cur.layer[i].val < num {
 			cur = cur.layer[i]
 		}
@@ -101,7 +98,7 @@ func (s *SkipList) Erase(num int) bool {
 	}
 
 	if cur.layer[0] != nil && cur.layer[0].val == num {
-		for i := MaxLayers-1; i>=0; i-- {
+		for i := MaxLayers - 1; i >= 0; i-- {
 			if path[i].layer[i] != nil && path[i].layer[i].val == num {
 				path[i].layer[i] = path[i].layer[i].layer[i]
 			}
@@ -110,7 +107,6 @@ func (s *SkipList) Erase(num int) bool {
 	}
 	return false
 }
-
 
 /**
  * Your SkipList object will be instantiated and called as such:

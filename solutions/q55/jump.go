@@ -10,7 +10,7 @@ func canJump(nums []int) bool {
 			return false
 		}
 		// i + nums[i] 为当前点能达到的最远距离, 不断贪心
-		sum = max(sum, i + nums[i])
+		sum = max(sum, i+nums[i])
 	}
 	return true
 }
@@ -31,12 +31,11 @@ func canJump2(nums []int) bool {
 
 	lens := len(nums)
 	lp := lens - 1
-	for i := lens - 1;i >= 0;i-- {
-		if i + nums[i] >= lp {
+	for i := lens - 1; i >= 0; i-- {
+		if i+nums[i] >= lp {
 			lp = i
 		}
 	}
 
 	return lp == 0
 }
-

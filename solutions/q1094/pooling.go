@@ -1,6 +1,5 @@
 package q1094
 
-
 func carPooling(trips [][]int, capacity int) bool {
 	m := [1001]int{}
 	for i := range trips {

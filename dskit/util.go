@@ -32,4 +32,3 @@ func Equals(tb testing.TB, exp, act interface{}) {
 		tb.Fatalf("excepted '%v', got '%v'", exp, act)
 	}
 }
-

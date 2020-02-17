@@ -13,7 +13,7 @@ func largestSumAfterKNegations(A []int, K int) (r int) {
 		// 若取反后值未变下标不变
 		// A[i] != p 加速
 		// 若比后一个值小下标依然不变
-		if A[i] != p && i < len(A)-1 && A[i] >= A[i+1]{
+		if A[i] != p && i < len(A)-1 && A[i] >= A[i+1] {
 			i++
 		}
 		K--
