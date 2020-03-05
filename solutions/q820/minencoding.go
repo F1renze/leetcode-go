@@ -57,6 +57,8 @@ func minimumLengthEncoding(words []string) int {
 	return c
 }
 
+// Using strings.Builder is about 3 times faster than using string concatenation
+// https://stackoverflow.com/a/57645384
 func Reverse(in string) string {
 	var sb strings.Builder
 	runes := []rune(in)
