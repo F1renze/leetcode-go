@@ -1,0 +1,17 @@
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Create local changes
+        run: |
+          export count=$(make count);echo $count;sed -i 's/Total:.*/Total: '$count'/1' README.md
+      - name: Commit files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "F1renze"
+          git commit -m "docs: update readme" -a
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.TOKEN }}
