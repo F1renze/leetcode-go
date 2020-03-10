@@ -1,3 +1,11 @@
+name: leetcode-go
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ maseter ]
+
 jobs:
   build:
     runs-on: ubuntu-latest
