@@ -10,13 +10,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - env:
-          - COMMIT_EMAIL
       - uses: actions/checkout@master
       - name: Create local changes
         run: |
           export count=$(make count);echo $count;sed -i 's/Total:.*/Total: '$count'/1' README.md
       - name: Commit files
+        env:
+          COMMIT_EMAIL: ${{ secrets.COMMIT_EMAIL }}
         run: |
           git config --local user.email "${COMMIT_EMAIL}"
           git config --local user.name "F1renze"
