@@ -1,5 +1,5 @@
 # My LeetCode Solutions
-Total: 93
+Total: 94
 
 # Usage
 ```shell script
