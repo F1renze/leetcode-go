@@ -22,3 +22,4 @@ build/*.json
 /build/conf.yml
 **/.DS_Store
 /lab/
+/solutions/design/
