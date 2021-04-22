@@ -13,13 +13,13 @@ func isHappy(n int) bool {
 		}
 		m[n] = true
 
-		for n> 0 {
-			rem := n%10
-			sum += rem *rem
-			n/=10
+		for n > 0 {
+			rem := n % 10
+			sum += rem * rem
+			n /= 10
 		}
 		n = sum
-		sum=0
+		sum = 0
 	}
 
 	return true
