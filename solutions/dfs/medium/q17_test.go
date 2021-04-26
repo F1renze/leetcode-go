@@ -7,7 +7,7 @@ import (
 )
 
 func TestLetterCombinations(t *testing.T) {
-	ans := LetterCombinations("23")
+	ans := letterCombinations("23")
 	expect := []string{"ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"}
 
 	if len(ans) != len(expect) {
